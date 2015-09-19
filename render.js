@@ -52,8 +52,8 @@ function render(threads){
       });
     }));
 
-    var beginningOfTime = Math.min.apply(null, allMsgTimes);
-    var endOfTime = Math.max.apply(null, allMsgTimes);
+    var beginningOfTime = allMsgTimes.reduce(function(a, b){ if (a < b) return a; else return b; });
+    var endOfTime = allMsgTimes.reduce(function(a, b){ if (a > b) return a; else return b; });
     console.log((endOfTime - beginningOfTime)/(3600*24*365*1000));
 
     var layers0 = stack(sample(threads, m, beginningOfTime, endOfTime).map(function(thread){
