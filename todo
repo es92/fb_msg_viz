@@ -1,0 +1,17 @@
+
+*** = necessary before ship
+
+content
+  add scroller
+  add messages pane
+  other visualizations - characters, # sent, # received, ratio sent received, people by keywords, topics by keywords...
+  examples
+
+enhancements
+  ***fix ui more
+  more detailed loading info
+  smooth curve (convolutions)
+  scroller auto zooming
+  select entire conversation area when click
+
+

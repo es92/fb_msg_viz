@@ -1,0 +1,214 @@
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+html {
+  min-width: 950px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+
+}
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+.header {
+  border-bottom: 1px solid #444;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding: 1rem;
+  display: inline-block;
+}
+
+.back {
+  width: 2rem;
+  height: 2em;
+  background: blue;
+  display: inline-block;
+  float: right;
+  margin: 1rem;
+}
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+.explanation {
+  padding: 2rem;
+}
+
+.setup {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.setup > * {
+  display: inline-block;
+  border: 1px solid #444;
+  border-radius: .25rem;
+  padding: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin: 1rem;
+}
+
+.arrow {
+  border: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  font-size: 4rem;
+  margin-top: -.5rem;
+}
+
+.drag {
+  border: 2px dashed #aaa;
+}
+
+.drag.hover {
+  border: 2px dashed #444;
+}
+
+@-webkit-keyframes rotate {
+  0% { -webkit-transform: rotate(360deg); }
+  100% { -webkit-transform: rotate(0deg); }
+}
+
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  -webkit-animation-name:             rotate; 
+  -webkit-animation-duration:         1.5s; 
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-animation-timing-function: steps(12);
+}
+
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+.viz {
+  position: absolute;
+  top: 5rem;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+}
+
+.tooltip {
+  font-size: 1.25rem;
+  height: 1.25rem;
+  padding: .625rem;
+  padding-left: 2rem;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+
+  border-bottom: 1px solid #aaa;
+}
+
+.data {
+  position: absolute;
+  top: 4rem;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+
+  border: 1px solid #aaa;
+}
+
+.graph {
+  position: absolute;
+  margin: 1rem;
+  left: 0;
+  right: 33%;
+  top: 0;
+  bottom: 0;
+
+}
+
+.graph > * {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.msgs {
+  position: absolute;
+  right: 0;
+  width: 33%;
+  top: 0;
+  bottom: 0;
+  background: #444;
+
+}
+
+.msgs.hidden + * {
+  right: 0;
+}
+
+
+.msgs-header {
+  position: absolute;
+  height: 2rem;
+  width: 100%;
+  background: magenta;
+}
+
+.msgs-close {
+  display: inline-block;
+  float: right;
+  background: blue;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: .25rem;
+}
+
+.msgs-content {
+  position: absolute;
+  bottom: 0;
+  top: 2rem;
+  width: 100%;
+  background: red;
+}
+
+
+.slider {
+
+  position: absolute;
+  bottom: .5rem;
+  background: yellow;
+
+  height: 1rem;
+  width: 100%;
+
+
+}
+
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+.hidden {
+  display: none;
+}

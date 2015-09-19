@@ -1,0 +1,26 @@
+
+User Flow
+
+Pages
+
+  [                 fb msgr visualized                ]
+  [ Request your data --> [ drag messages.html here ] ]
+  [                     examples                      ]
+
+  [                 fb msgr visualized                ]
+  [                     loading                       ]
+
+  [                 fb msgr visualized                ]
+  [                    visualization                  ]
+
+Properties of Visualization
+  - make out total shape and details
+    - slider at bottom, with drag, resize
+  - see who is who
+    - show name on hover
+  - see when is when
+    - show when on hover
+    - some sort of timescale
+  - see what is what
+    - click on person/time -> message viewer
+

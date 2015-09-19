@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="render.js"></script>
+  <script src="process.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="http://momentjs.com/downloads/moment.min.js"></script>
+  <script src="http://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    window.onload = function(){
+      var $ = document.querySelector.bind(document);
+      $('.back').onclick = function(){
+        $('.viz').classList.toggle('hidden');
+        $('.setup').classList.toggle('hidden');
+        $('.explanation').classList.toggle('hidden');
+        $('.back').classList.toggle('hidden');
+      }
+      $('.msgs-close').onclick = function(){
+        $('.msgs').classList.toggle('hidden');
+      }
+      $('.upload').onclick = function(){
+        $('#fileUploader').click();
+      }
+      function upload(file){
+        $('.loader').classList.remove('hidden');
+        $('.drag').classList.add('hidden');
+        $('.explanation').classList.add('hidden');
+        $('.arrow').classList.add('hidden');
+        $('.request').classList.add('hidden');
+        var reader = new FileReader();
+        reader.onload = function(){
+          process(reader.result, function(err, threads){
+            if (err){
+              alert('the chosen file could not be parsed, please try again with a different file');
+              $('.explanation').classList.remove('hidden');
+            }
+            else {
+              $('.viz').classList.toggle('hidden');
+              $('.setup').classList.toggle('hidden');
+              $('.explanation').classList.add('hidden');
+              //$('.back').classList.toggle('hidden');
+              render(threads);
+            }
+            $('.drag').classList.remove('hidden');
+            $('.arrow').classList.remove('hidden');
+            $('.request').classList.remove('hidden');
+            $('.loader').classList.add('hidden');
+          });
+        };
+        reader.readAsText(file);
+      }
+      $('#fileUploader').onchange = function(){
+        var file = this.files[0];
+        upload(file);
+      }
+      $('.drag').ondragenter = function(e){
+        this.classList.add('hover');
+        e.preventDefault();
+        e.stopPropagation();
+      };
+      $('.drag').ondragover = function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      };
+      $('.drag').ondragend = function(){
+        this.classList.remove('hover');
+      };
+      $('.drag').ondragleave = function(){
+        this.classList.remove('hover');
+      };
+      $('.drag').ondrop = function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        upload(event.dataTransfer.files[0]);
+        return false;
+      };
+    }
+  </script>
+</head>
+<body>
+  <div class="header"> 
+    <div class="title">Facebook Messages Visualized</div>
+    <div class="back hidden"></div>
+  </div>
+  <div class="explanation">
+    This tool provides a <a href="https://en.wikipedia.org/wiki/Streamgraph" target="_blank">StreamGraph</a> visualization of your facebook messenger data. Your data is analyzed locally, and so will remain private.
+  </div>
+  <div class="setup">
+    <div class="request"> <a href="https://www.facebook.com/help/212802592074644" target="_blank"> Request and Download Your Facebook Data </a> </div>
+    <div class="arrow"> &#8594; </div>
+    <div class="drag"> Drag messages.htm here (or <button class="upload">upload</button> it) </div>
+    <image class="loader hidden" src="loadingIndicator.png"></image>
+  </div>
+  <div class="viz hidden">
+    <div class="tooltip"></div>
+    <div class="data">
+      <div class="msgs hidden">
+        <div class="msgs-header">
+          <div class="msgs-name"></div>
+          <div class="msgs-close"></div>
+        </div>
+        <div class="msgs-content"></div>
+      </div>
+      <div class="graph"></div>
+    </div>
+    <div class="slider hidden"></div>
+  </div>
+  <input type="file" id="fileUploader" class="hidden" />
+  <!--<div class="footer">
+    Copyright 2015 Evan Shapiro
+  </div>-->
+</body>
+</html>
